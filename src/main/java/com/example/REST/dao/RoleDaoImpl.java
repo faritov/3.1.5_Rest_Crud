@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public class RoleDaoImpl implements RoleDao {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public RoleDaoImpl(EntityManager entityManager) {
         this.entityManager = entityManager;

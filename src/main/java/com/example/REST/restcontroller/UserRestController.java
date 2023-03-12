@@ -12,13 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping()
 public class UserRestController {
-    private final UserService userService;
-
-
-    public UserRestController(UserService userService) {
-        this.userService = userService;
-
-    }
 
     @GetMapping("/api/userPage")
     public ResponseEntity<User> showAuthUser(Authentication authentication) {

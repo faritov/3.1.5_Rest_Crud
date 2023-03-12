@@ -23,8 +23,6 @@ public class Init {
         this.roleService = roleService;
     }
 
-
-    //    @EventListener(ApplicationReadyEvent.class)
     @PostConstruct
     public void createTable () {
         if (roleService.getList().isEmpty()) {

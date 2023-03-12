@@ -32,18 +32,6 @@ public class AdminRestController {
         return new ResponseEntity<>(listAllUsers, HttpStatus.OK);
     }
 
-    @GetMapping("/users/{id}")
-    public ResponseEntity<User> showUser(@PathVariable("id") int id) {
-        User user = userService.showUser(id);
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }
-
-    @GetMapping("/userAuth")
-    public ResponseEntity<User> showAuthUser(Authentication authentication) {
-        User user = (User) authentication.getPrincipal();
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }
-
     @PostMapping("/newAddUser")
     public ResponseEntity<HttpStatus> saveNewUser(@RequestBody User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
