@@ -34,11 +34,13 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @Transactional
     public void deleteRole(Long id) {
         roleDaoImpl.deleteRole(id);
     }
 
     @Override
+    @Transactional
     public void editRole(Role role) {
         roleDaoImpl.editRole(role);
     }

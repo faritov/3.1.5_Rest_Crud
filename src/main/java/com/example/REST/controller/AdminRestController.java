@@ -1,4 +1,4 @@
-package com.example.REST.restcontroller;
+package com.example.REST.controller;
 
 import com.example.REST.model.User;
 import com.example.REST.service.RoleService;
@@ -31,7 +31,17 @@ public class AdminRestController {
         List<User> listAllUsers = userService.getAllUsers();
         return new ResponseEntity<>(listAllUsers, HttpStatus.OK);
     }
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> showUser(@PathVariable("id") int id) {
+        User user = userService.showUser(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 
+        @GetMapping("/userAuth")
+    public ResponseEntity<User> showAuthUser(Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
     @PostMapping("/newAddUser")
     public ResponseEntity<HttpStatus> saveNewUser(@RequestBody User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));

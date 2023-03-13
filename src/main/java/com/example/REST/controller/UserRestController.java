@@ -1,4 +1,4 @@
-package com.example.REST.restcontroller;
+package com.example.REST.controller;
 
 import com.example.REST.model.User;
 import com.example.REST.service.UserService;

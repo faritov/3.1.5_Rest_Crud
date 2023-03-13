@@ -63,4 +63,24 @@ public class Role implements GrantedAuthority {
         String pr = "ROLE_";
         return name.substring(pr.length());
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Role role = (Role) o;
+
+        if (getId() != role.getId()) return false;
+        if (getName() != null ? !getName().equals(role.getName()) : role.getName() != null) return false;
+        return getUsers() != null ? getUsers().equals(role.getUsers()) : role.getUsers() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId();
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getUsers() != null ? getUsers().hashCode() : 0);
+        return result;
+    }
 }
